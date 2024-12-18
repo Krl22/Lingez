@@ -38,6 +38,9 @@ const firebaseConfig = {
     : process.env.FIREBASE_MEASUREMENT_ID,
 };
 
+// Verificar que las variables de entorno se han cargado correctamente
+console.log("Firebase Config:", firebaseConfig);
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
