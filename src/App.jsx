@@ -10,6 +10,11 @@ import Register from "./components/Register";
 import Home from "./pages/home";
 import TopNavBar from "./components/TopNavBar";
 import BottomNavBar from "./components/BottomNavBar";
+import Lessons from "./pages/Lessons";
+import Environment from "./pages/Environment";
+import More from "./pages/More";
+import Chat from "./pages/chat";
+import Account from "./pages/Account";
 
 function App() {
   return (
@@ -22,6 +27,11 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/lessons" element={<Lessons />} />
+            <Route path="/environment" element={<Environment />} />
+            <Route path="/more" element={<More />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </div>
         <ConditionalBottomNavBar />
