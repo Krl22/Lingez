@@ -10,42 +10,16 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// Detectar el entorno: Vite o Choreo
-const isVite = import.meta.env.MODE === "development"; // Detecta Vite en desarrollo
-
-// Usar un prefijo diferente según el entorno
 const firebaseConfig = {
-  apiKey: isVite
-    ? import.meta.env.VITE_FIREBASE_API_KEY
-    : process.env.FIREBASE_API_KEY,
-  authDomain: isVite
-    ? import.meta.env.VITE_FIREBASE_AUTH_DOMAIN
-    : process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: isVite
-    ? import.meta.env.VITE_FIREBASE_PROJECT_ID
-    : process.env.FIREBASE_PROJECT_ID,
-  storageBucket: isVite
-    ? import.meta.env.VITE_FIREBASE_STORAGE_BUCKET
-    : process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: isVite
-    ? import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID
-    : process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: isVite
-    ? import.meta.env.VITE_FIREBASE_APP_ID
-    : process.env.FIREBASE_APP_ID,
-  measurementId: isVite
-    ? import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
-    : process.env.FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyAmn64Gy87WOw_-LzYHOATiffPZrGbVdms",
+  authDomain: "lingez-40aed.firebaseapp.com",
+  databaseURL: "https://lingez-40aed-default-rtdb.firebaseio.com",
+  projectId: "lingez-40aed",
+  storageBucket: "lingez-40aed.firebasestorage.app",
+  messagingSenderId: "815588133716",
+  appId: "1:815588133716:web:6240b12795c8cf1e2c16c1",
+  measurementId: "G-B5LR7HQF2M",
 };
-
-// Verificar que las variables de entorno se han cargado correctamente
-console.log("Firebase Config:", firebaseConfig);
-
-if (isVite) {
-  console.log("Vite Env:", import.meta.env); // Accede a import.meta.env en desarrollo
-} else {
-  console.log("Process.env:", process.env); // Accede a process.env en producción (Choreo)
-}
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

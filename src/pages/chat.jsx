@@ -25,7 +25,7 @@ const Chat = () => {
   ]);
   const messagesEndRef = useRef(null);
   const openai = new OpenAI({
-    apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+    apiKey: "sk-proj-dlLF6qugDDsDRFpdC7n8T3BlbkFJgG23OZVVdoUZZ4GuvzzR",
     dangerouslyAllowBrowser: true,
   });
 
