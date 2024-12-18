@@ -41,6 +41,12 @@ const firebaseConfig = {
 // Verificar que las variables de entorno se han cargado correctamente
 console.log("Firebase Config:", firebaseConfig);
 
+if (isVite) {
+  console.log("Vite Env:", import.meta.env); // Accede a import.meta.env en desarrollo
+} else {
+  console.log("Process.env:", process.env); // Accede a process.env en producción (Choreo)
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
