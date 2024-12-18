@@ -60,28 +60,29 @@ const Account = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-[92px]">
-      <h1 className="mb-6 text-3xl font-bold text-center text-gray-800">
+    <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-blue-100 to-indigo-200 rounded-xl shadow-2xl mt-[92px]">
+      <h1 className="mb-8 text-4xl font-extrabold text-center text-gray-800">
         Account Information
       </h1>
+
       {currentUser && (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-8 md:grid-cols-2">
           {/* Información de la cuenta */}
-          <div className="p-4 bg-gray-100 rounded-lg shadow-md">
-            <h2 className="mb-4 text-xl font-semibold text-gray-700">
+          <div className="p-6 bg-white shadow-lg rounded-xl">
+            <h2 className="mb-6 text-2xl font-semibold text-gray-700">
               User Details
             </h2>
             <div>
               <p className="font-semibold text-gray-600">Photo:</p>
               {profileImage ? (
-                <div className="flex items-center">
+                <div className="flex items-center gap-6">
                   <img
                     src={profileImage}
                     alt="User profile"
-                    className="w-24 h-24 border-2 border-gray-300 rounded-full"
+                    className="border-4 border-indigo-400 rounded-full w-28 h-28"
                   />
                   <button
-                    className="ml-4 btn btn-primary"
+                    className="text-white transition-all btn btn-primary hover:bg-indigo-600"
                     onClick={() =>
                       document.getElementById("profileImageModal").showModal()
                     }
@@ -93,7 +94,7 @@ const Account = () => {
                 <p className="text-gray-800">N/A</p>
               )}
             </div>
-            <div className="space-y-4">
+            <div className="mt-6 space-y-6">
               <div>
                 <p className="font-semibold text-gray-600">Email:</p>
                 <p className="text-gray-800">{currentUser.email}</p>
@@ -118,26 +119,29 @@ const Account = () => {
           </div>
 
           {/* Sección de cambio de nickname */}
-          <div className="p-4 mb-20 bg-gray-100 rounded-lg shadow-md">
-            <h2 className="mb-4 text-xl font-semibold text-gray-700">
+          <div className="p-6 mb-20 bg-white shadow-lg rounded-xl">
+            <h2 className="mb-6 text-2xl font-semibold text-gray-700">
               Change Nickname
             </h2>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="form-control">
-                <label className="label">
-                  <span className="text-gray-600 label-text">New Nickname</span>
+                <label className="mb-2 label">
+                  <span className="font-semibold text-gray-700">
+                    New Nickname
+                  </span>
                 </label>
                 <input
                   type="text"
                   value={newNickname}
                   onChange={(e) => setNewNickname(e.target.value)}
-                  className="w-full input input-bordered input-primary"
+                  className="w-full p-4 text-gray-800 placeholder-gray-400 transition-all duration-300 ease-in-out border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 bg-gray-50"
                   placeholder="Enter new nickname"
                 />
               </div>
+
               <button
                 onClick={handleNicknameChange}
-                className="w-full btn btn-primary"
+                className="w-full py-3 font-semibold text-white transition-all bg-indigo-600 rounded-lg shadow-lg hover:bg-indigo-700 disabled:opacity-50"
               >
                 Save Nickname
               </button>
@@ -147,21 +151,25 @@ const Account = () => {
           {/* Modal para cambiar imagen de perfil */}
           <dialog id="profileImageModal" className="modal">
             <div className="modal-box">
-              <h3 className="text-lg font-bold">Choose a Profile Picture</h3>
-              <div className="grid grid-cols-3 gap-4 mt-4">
+              <h3 className="text-xl font-bold text-gray-700">
+                Choose a Profile Picture
+              </h3>
+              <div className="grid grid-cols-3 gap-4 mt-6">
                 {availableImages.map((image, index) => (
                   <img
                     key={index}
                     src={image}
                     alt={`Profile option ${index + 1}`}
-                    className="w-20 h-20 border-2 border-gray-300 rounded-full cursor-pointer hover:opacity-75"
+                    className="w-24 h-24 transition-all border-4 border-gray-300 rounded-full cursor-pointer hover:scale-110 hover:border-indigo-400"
                     onClick={() => handleProfileImageChange(image)}
                   />
                 ))}
               </div>
-              <div className="modal-action">
+              <div className="mt-4 modal-action">
                 <form method="dialog">
-                  <button className="btn">Close</button>
+                  <button className="text-white btn btn-secondary">
+                    Close
+                  </button>
                 </form>
               </div>
             </div>

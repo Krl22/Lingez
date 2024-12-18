@@ -25,7 +25,8 @@ const Chat = () => {
   ]);
   const messagesEndRef = useRef(null);
   const openai = new OpenAI({
-    apiKey: "sk-proj-dlLF6qugDDsDRFpdC7n8T3BlbkFJgG23OZVVdoUZZ4GuvzzR",
+    apiKey:
+      "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",
     dangerouslyAllowBrowser: true,
   });
 

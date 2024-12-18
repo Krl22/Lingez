@@ -15,6 +15,12 @@ import Environment from "./pages/Environment";
 import More from "./pages/More";
 import Chat from "./pages/chat";
 import Account from "./pages/Account";
+import Notification from "./pages/Notifications";
+import Game from "./pages/Game";
+import Lobby from "./pages/Lobby";
+import Room from "./pages/Room";
+import Search from "./pages/Search";
+import Scene from "./pages/locations/Restaurant/scene";
 
 function App() {
   return (
@@ -32,6 +38,12 @@ function App() {
             <Route path="/more" element={<More />} />
             <Route path="/account" element={<Account />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/notifications" element={<Notification />} />
+            <Route path="/game/:roomId" element={<Game />} />
+            <Route path="/lobby" element={<Lobby />} />
+            <Route path="/room/:roomId" element={<Room />} />
+            <Route path="/search-rooms" element={<Search />} />
+            <Route path="/restaurant" element={<Scene />} />
           </Routes>
         </div>
         <ConditionalBottomNavBar />

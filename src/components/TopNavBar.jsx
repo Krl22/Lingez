@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaBell, FaUserCircle } from "react-icons/fa";
 import { title } from "./BottomNavBar";
-import { auth } from "../firebaseconfig";
+import { auth, db } from "../firebaseconfig";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 
 const TopNavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  // const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -49,24 +49,24 @@ const TopNavBar = () => {
     };
   }, [menuOpen]);
 
-  // useEffect(() => {
-  //   const fetchUserData = async () => {
-  //     try {
-  //       const user = auth.currentUser;
-  //       if (user) {
-  //         const userDocRef = doc(db, "users", user.uid);
-  //         const userDocSnap = await getDoc(userDocRef);
-  //         if (userDocSnap.exists()) {
-  //           setUserData(userDocSnap.data());
-  //         }
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const user = auth.currentUser;
+        if (user) {
+          const userDocRef = doc(db, "users", user.uid);
+          const userDocSnap = await getDoc(userDocRef);
+          if (userDocSnap.exists()) {
+            setUserData(userDocSnap.data());
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-  //   fetchUserData();
-  // }, []);
+    fetchUserData();
+  }, []);
 
   const handleNotificationsClick = () => {
     navigate("/notifications");
@@ -85,21 +85,23 @@ const TopNavBar = () => {
   return (
     <div className="fixed top-0 z-10 w-full px-4 py-1 shadow-md bg-gradient-to-r from-purple-400 to-indigo-600">
       <div className="flex items-center justify-between">
-        <div className="indicator">
-          <span className="indicator-item badge badge-secondary">99+</span>
+        <div className="relative">
+          <span className="absolute top-0 left-0 z-10 inline-flex items-center justify-center w-6 h-6 text-xs font-semibold text-white bg-red-500 rounded-full -translate-x-1/4 -translate-y-1/4">
+            99+
+          </span>
           <button
-            className="text-white focus:outline-none"
+            className="relative p-2 transition-all duration-200 ease-in-out bg-indigo-600 rounded-full hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-300"
             aria-label="Notifications"
             onClick={handleNotificationsClick}
           >
-            <FaBell className="w-8 h-8" />
+            <FaBell className="w-8 h-8 text-white" />
           </button>
         </div>
 
         <div className="text-center text-white">
           <h1 className="text-xl font-semibold">{title.value}</h1>
         </div>
-        {/* {userData && (
+        {userData && (
           <div className="flex flex-col items-center justify-center">
             <div className="flex items-center mb-2">
               <span className="mr-1 text-sm text-white">Nivel:</span>
@@ -117,7 +119,7 @@ const TopNavBar = () => {
               </div>
             </div>
           </div>
-        )} */}
+        )}
 
         <div className="relative">
           <button
