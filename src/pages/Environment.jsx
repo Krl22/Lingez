@@ -110,7 +110,7 @@ const Environment = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-green-50 to-green-100 p-6 pt-[92px] pb-[112px] flex flex-col md:flex-row">
-      <APIProvider apiKey={"AIzaSyBl-Y9xVxjWDlIVQSoNVBT_xeh43JhQlNc"}>
+      <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
         <div className="w-full md:w-1/3 lg:w-1/4 md:mr-4">
           <Legend locations={locations} />
         </div>
